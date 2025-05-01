@@ -53,13 +53,19 @@ struct ContentView: View {
                     .foregroundColor(secColor)
                     .padding(.bottom, 50)
                     .tracking(0.2)
+
                 NavigationLink(destination: LoginView()) {
                     GetStartedButton(title: "Get Started", titleColor: .white, color: primaryColor, action: { print("button pressed") }
                     )
                 }
+                Text("An informational channel built by pre-law students")
+                    .foregroundColor(primaryColor)
+                    .multilineTextAlignment(.center)
+                    .padding(.top)
+                    .tracking(0.2)
             }
             .padding()
-            .frame(maxWidth: .infinity, maxHeight: .infinity) 
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(backgroundColor)
         }
     }

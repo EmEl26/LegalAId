@@ -25,14 +25,24 @@ struct LoginView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                Text("Unlock your 24/7 Legal Ai(d) Today")
-                    .font(.largeTitle)
-                    .foregroundColor(primaryColor)
-                    .bold()
-                    .tracking(-0.4)
-                    .padding(.trailing, 30)
-                    .padding(.horizontal, 35)
-                    .padding(.bottom, 90)
+                HStack {
+                    Text("Unlock your 24/7")
+                        .font(.largeTitle)
+                        .foregroundColor(Color(red: 255/255, green: 223/255, blue: 0/255))
+                        .bold()
+                        .tracking(-0.4)
+                        .padding(.trailing, 30)
+                        .padding(.horizontal, 35)
+                        .padding(.bottom, 90)
+                    
+                    Text("Legal Ai(d)")
+                        .font(.largeTitle)
+                        .foregroundColor(Color(red: 0/255, green: 0/255, blue: 128/255))
+                        .bold()
+                        .tracking(-0.4)
+                        .padding(.horizontal, 35)
+                        .padding(.bottom, 90)
+                }
 
                 TextField("Name",
                           text: $name,
@@ -113,8 +123,8 @@ struct LoginView: View {
 
     func handleLogin() {
         authViewModel.login(email: name, password: password)
+        loginError = authViewModel.errorMessage // Capture error from AuthViewModel
     }
-
 }
 
 #Preview {

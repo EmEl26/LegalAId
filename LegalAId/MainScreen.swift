@@ -26,31 +26,34 @@ struct MainScreen: View {
     
     var body: some View {
         NavigationStack {
-            ScrollView {
-                VStack {
-                    if isLoading {
-                        ProgressView("Loading cases...")
-                            .padding()
-                            .foregroundColor(primaryColor)
-                    } else {
-                        headerView
-                        
-                        caseSection
-                        
-                        attorneySection
-                        
-                        psychologySection
+            ZStack {
+                backgroundColor.ignoresSafeArea()
+                ScrollView {
+                    VStack {
+                        if isLoading {
+                            ProgressView("Loading cases...")
+                                .padding()
+                                .foregroundColor(primaryColor)
+                        } else {
+                            headerView
+                            caseSection
+                            attorneySection
+                            psychologySection
+                        }
                     }
-                }
-                .padding(.horizontal)
-                .background(backgroundColor.ignoresSafeArea())
-                .onAppear {
-                    loadData()
+                    .padding(.horizontal)
+                    .padding(.top)
+                    .padding(.bottom, 40)
                 }
             }
+            .navigationBarHidden(true)
             .navigationBarBackButtonHidden(true)
+            .onAppear {
+                loadData()
+            }
         }
     }
+
     
     // MARK: - Header View
     private var headerView: some View {
@@ -59,12 +62,13 @@ struct MainScreen: View {
             .foregroundColor(primaryColor)
             .fontWeight(.bold)
             .padding(.horizontal)
+            .padding(.bottom)
     }
     
     // MARK: - Case Section
     private var caseSection: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("Cases")
+            Text("CASES")
                 .foregroundColor(primaryColor)
                 .font(.title2)
                 .tracking(1)
@@ -85,7 +89,7 @@ struct MainScreen: View {
     // MARK: - Attorney Section
     private var attorneySection: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("Low Cost Attorneys")
+            Text("FREE/LOW COST ATTORNEYS")
                 .foregroundColor(primaryColor)
                 .font(.title2)
                 .tracking(1)
@@ -106,7 +110,7 @@ struct MainScreen: View {
     // MARK: - Psychology Section
     private var psychologySection: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("Psychology Resources")
+            Text("RESOURCES NEAR YOU")
                 .foregroundColor(primaryColor)
                 .font(.title2)
                 .tracking(1)
@@ -177,6 +181,7 @@ struct CaseItemView: View {
             }
             .hidden()
         }
+
     }
 
     private func loadCaseDetails() {
