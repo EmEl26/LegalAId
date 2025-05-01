@@ -31,39 +31,38 @@ class AuthViewModel: ObservableObject {
 
         private let db = Firestore.firestore()
 
-        func signUp(email: String, password: String, fullName: String, location: String, avatarData: Data?) async -> Bool {
-            do {
-                let result = try await Auth.auth().createUser(withEmail: email, password: password)
-                // Update profile
-                let changeRequest = result.user.createProfileChangeRequest()
-                changeRequest.displayName = fullName
-                try await changeRequest.commitChanges()
+    func signUp(email: String, password: String, fullName: String, location: String, avatarData: Data?) async -> Bool {
+        do {
+            let result = try await Auth.auth().createUser(withEmail: email, password: password)
+            
+            let changeRequest = result.user.createProfileChangeRequest()
+            changeRequest.displayName = fullName
+            try await changeRequest.commitChanges()
 
-                // Save additional user data
-                let userData: [String: Any] = [
-                    "uid": result.user.uid,
-                    "email": email,
-                    "fullName": fullName,
-                    "location": location,
-                    "avatarURL": ""
-                ]
+            // Save additional user data
+            let userData: [String: Any] = [
+                "uid": result.user.uid,
+                "email": email,
+                "fullName": fullName,
+                "location": location,
+                "avatarURL": ""
+            ]
 
-                try await db.collection("users").document(result.user.uid).setData(userData)
-                
-                await MainActor.run {
-                    self.currentUser = result.user
-                    self.isLoggedIn = true
-                    self.fetchUserData()
-                }
-
-
-                return true
-            } catch {
-                self.errorMessage = error.localizedDescription
-                return false
+            try await db.collection("users").document(result.user.uid).setData(userData)
+            
+            await MainActor.run {
+                self.currentUser = result.user
+                self.isLoggedIn = true
+                self.fetchUserData()
+                self.errorMessage = nil
             }
-        }
 
+            return true
+        } catch {
+            self.errorMessage = error.localizedDescription
+            return false
+        }
+    }
     /// Attempts to sign out the user
     func logout() {
         do {
@@ -85,7 +84,7 @@ class AuthViewModel: ObservableObject {
                     self.errorMessage = error.localizedDescription // Show error
                 } else {
                     print("Login successful for: \(result?.user.email ?? "")")
-                    self.errorMessage = nil  
+                    self.errorMessage = nil
                     self.isLoggedIn = true
                     self.fetchUserData()
                 }
