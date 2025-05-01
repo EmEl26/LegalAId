@@ -2,8 +2,8 @@ import SwiftUI
 
 struct ChatMessage: Identifiable {
     let id = UUID()
-    let question: String
-    let response: String
+    var question: String
+    var response: String
 }
 
 struct ChatQuestionView: View {

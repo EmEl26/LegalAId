@@ -12,7 +12,8 @@
             "Queens": "347-592-2200",
             "Staten Island": "718-233-6480"
         },
-        "instagram": "@legalservicesnyc"
+        "instagram": "@legalservicesnyc",
+        "tags": ["Civil Legal Services", "Housing and Eviction", "Immigration Assistance"]
     },
     {
         "organization_name": "The Legal Aid Society",
@@ -20,7 +21,8 @@
         "phone": "212-577-3300",
         "services": "Comprehensive legal assistance in criminal defense, civil matters, and juvenile rights.",
         "address": "49 Thomas Street, 5th Floor, New York, NY",
-        "instagram": "@legalaidnyc"
+        "instagram": "@legalaidnyc",
+        "tags": ["Civil Legal Services", "Criminal Defense", "Children & Youth"]
     },
     {
         "organization_name": "New York Legal Assistance Group (NYLAG)",
@@ -28,7 +30,8 @@
         "phone": "212-613-5000",
         "services": "Free civil legal services including immigration, housing, public benefits, and family law.",
         "address": "100 Pearl Street, 19th Floor, New York, NY 10004",
-        "instagram": "@nylagnews"
+        "instagram": "@nylagnews",
+        "tags": ["Civil Legal Services", "Family Law", "Housing and Eviction"]
     },
     {
         "organization_name": "City Bar Justice Center (CBJC)",
@@ -36,12 +39,14 @@
         "phone": "212-626-7383",
         "services": "Legal assistance in areas such as housing, immigration, bankruptcy, and elder law.",
         "address": "42 West 44th Street, New York, NY 10036",
-        "instagram": "@nycbarassociation"
+        "instagram": "@nycbarassociation",
+        "tags": ["Housing and Eviction", "Immigration Assistance", "Bankruptcy"]
     },
     {
         "organization_name": "New York County Lawyers Association (NYCLA)",
         "website": "nycla.org",
-        "services": "Pro bono representation in areas like Social Security appeals, veterans' discharge upgrades, and civil appeals."
+        "services": "Pro bono representation in areas like Social Security appeals, veterans' discharge upgrades, and civil appeals.",
+        "tags": ["Civil Legal Services", "Veterans Services"]
     },
     {
         "organization_name": "Mobilization for Justice (MFJ)",
@@ -51,30 +56,35 @@
         "addresses": [
             "100 William Street, 6th Floor, New York, NY 10038",
             "424 East 147th Street, 3rd Floor, Bronx, NY 10455"
-        ]
+        ],
+        "tags": ["Housing and Eviction", "Public Benefits", "Consumer Rights"]
     },
     {
         "organization_name": "Brooklyn A (Brooklyn Legal Services Corporation A)",
         "website": "bka.org",
         "instagram": "@bkalegal",
-        "services": "Legal assistance in housing preservation, tenant advocacy, and community development."
+        "services": "Legal assistance in housing preservation, tenant advocacy, and community development.",
+        "tags": ["Housing and Eviction"]
     },
     {
         "organization_name": "Open Hands Legal Services",
         "website": "openhandslegalservices.org",
         "instagram": "@openhandslegalservices",
-        "services": "Provides free legal aid to low-income New Yorkers at soup kitchens and shelters across NYC."
+        "services": "Provides free legal aid to low-income New Yorkers at soup kitchens and shelters across NYC.",
+        "tags": ["Low-Income Individuals"]
     },
     {
         "organization_name": "OATH (Office of Administrative Trials and Hearings) Pro Bono Legal Help",
         "website": "nyc.gov/oath",
         "phone": "212-436-0845",
-        "services": "Assistance with summonses related to buildings, taxi and limousine violations, and vehicle seizures."
+        "services": "Assistance with summonses related to buildings, taxi and limousine violations, and vehicle seizures.",
+        "tags": ["General Legal Services"]
     },
     {
         "organization_name": "LawHelpNY",
         "website": "lawhelpny.org",
-        "services": "Online resource providing information on free legal services and self-help materials across New York State."
+        "services": "Online resource providing information on free legal services and self-help materials across New York State.",
+        "tags": ["Self-Help Resources"]
     },
     {
         "organization_name": "Urban Justice Center (UJC)",
@@ -82,14 +92,16 @@
         "phone": "212-279-6170",
         "services": "Provides legal aid, class action litigation, legislative advocacy, and community education through various projects focused on issues like homelessness, domestic violence, and immigrant rights.",
         "address": "40 Rector Street, 9th Floor, New York, NY 10006",
-        "instagram": "@urbanjusticecenter"
+        "instagram": "@urbanjusticecenter",
+        "tags": ["Immigrants & Refugees"]
     },
     {
         "organization_name": "Lawyers Alliance for New York",
         "website": "lawyersalliance.org",
         "phone": "212-219-1800",
         "services": "Provides business and transactional legal services to nonprofit organizations and social enterprises, aiding in areas like housing, economic development, and education.",
-        "address": "171 Madison Avenue, 9th Floor, New York, NY 10016"
+        "address": "171 Madison Avenue, 9th Floor, New York, NY 10016",
+        "tags": ["General Legal Services"]
     },
     {
         "organization_name": "New York Lawyers for the Public Interest (NYLPI)",
@@ -97,14 +109,16 @@
         "phone": "212-244-4664",
         "services": "Focuses on civil rights, health justice, and environmental justice, connecting nonprofits with volunteer lawyers through their Pro Bono Clearinghouse.",
         "address": "151 West 30th Street, 11th Floor, New York, NY 10001",
-        "instagram": "@nylpi"
+        "instagram": "@nylpi",
+        "tags": ["Civil Legal Services", "Civil Rights"]
     },
     {
         "organization_name": "Access Justice Brooklyn",
         "website": "accessjusticebrooklyn.org",
         "phone": "718-624-3894",
         "services": "Provides civil legal assistance to Brooklyn residents in areas such as housing, family law, and consumer rights.",
-        "address": "44 Court Street, Suite 1206, Brooklyn, NY 11201"
+        "address": "44 Court Street, Suite 1206, Brooklyn, NY 11201",
+        "tags": ["Civil Legal Services", "Family Law", "Housing and Eviction"]
     },
     {
         "organization_name": "New York Volunteer Lawyers for the Arts (NYVLA)",
@@ -112,53 +126,63 @@
         "phone": "212-319-2787",
         "instagram": "@vlany",
         "services": "Offers legal services and educational programs to artists and arts organizations, covering issues like intellectual property and nonprofit formation.",
-        "address": "1 East 53rd Street, New York, NY 10022"
+        "address": "1 East 53rd Street, New York, NY 10022",
+        "tags": ["General Legal Services"]
     },
     {
         "organization_name": "Empire Justice Center",
         "website": "empirejustice.org",
         "phone": "518-462-6831",
         "services": "Provides legal assistance and advocacy in areas such as housing, public benefits, and consumer rights, focusing on low-income and marginalized communities.",
-        "address": "80 Pine Street, 33rd Floor, New York, NY 10005"
+        "address": "80 Pine Street, 33rd Floor, New York, NY 10005",
+        "tags": ["Housing and Eviction", "Public Benefits", "Consumer Rights"]
     },
     {
         "organization_name": "KIND (Kids in Need of Defense)",
         "website": "supportkind.org",
         "phone": "646-677-9900",
         "services": "Provides free legal services to unaccompanied immigrant children in the New York City area, assisting with immigration proceedings and related legal matters.",
-        "address": "125 Broad Street, 9th Floor, New York, NY 10004"
+        "address": "125 Broad Street, 9th Floor, New York, NY 10004",
+        "tags": ["Immigration Assistance", "Children & Youth", "Immigrants & Refugees"]
     },
     {
         "organization_name": "LawHelpNY",
         "website": "lawhelpny.org",
-        "services": "An online resource offering information on free legal services, self-help materials, and legal rights across various areas of law for New Yorkers."
+        "services": "An online resource offering information on free legal services, self-help materials, and legal rights across various areas of law for New Yorkers.",
+        "tags": ["Self-Help Resources"]
     },
     {
         "organization_name": "NY CourtHelp",
         "website": "nycourts.gov/courthelp",
-        "services": "Provides resources and information for individuals representing themselves in court, including court forms, DIY forms, and guidance on various legal processes."
+        "services": "Provides resources and information for individuals representing themselves in court, including court forms, DIY forms, and guidance on various legal processes.",
+        "tags": ["Self-Help Resources"]
     },
     {
         "organization_name": "New York State Bar Association Pro Bono Services",
         "website": "nysba.org/pro-bono-services",
-        "services": "Offers a range of pro bono opportunities and resources, including assistance with small claims court and consumer matters through partnerships with organizations like NYPIRG."
+        "services": "Offers a range of pro bono opportunities and resources, including assistance with small claims court and consumer matters through partnerships with organizations like NYPIRG.",
+        "tags": ["Consumer Rights", "Pro Bono Representation"]
     },
     {
         "organization_name": "Catholic Migration Services",
         "website": "catholicmigration.org",
         "phone": "718-236-3000",
-        "services": "Offers legal services to immigrants, including assistance with immigration applications and workers' rights."
+        "services": "Offers legal services to immigrants, including assistance with immigration applications and workers' rights.",
+        "tags": ["Immigration Assistance", "Immigrants & Refugees"]
     },
     {
         "organization_name": "Brooklyn Legal Services Corporation A (Brooklyn A)",
         "website": "bka.org",
         "phone": "718-487-2300",
-        "services": "Provides legal assistance in housing preservation, tenant advocacy, and community development."
+        "services": "Provides legal assistance in housing preservation, tenant advocacy, and community development.",
+        "tags": ["Housing and Eviction"]
     },
     {
         "organization_name": "Volunteers of Legal Service (VOLS)",
         "website": "volsprobono.org",
         "phone": "212-966-4400",
-        "services": "Offers pro bono legal services to low-income New Yorkers, focusing on areas like elder law, immigration, and small business support."
+        "services": "Offers pro bono legal services to low-income New Yorkers, focusing on areas like elder law, immigration, and small business support.",
+        "tags": ["Immigration Assistance", "Pro Bono Representation", "Low-Income Individuals"]
     }
 ]
+

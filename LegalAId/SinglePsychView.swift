@@ -23,6 +23,45 @@ struct SinglePsychView: View {
         Color(red: 0.796078431372549, green: 0.8392156862745098, blue: 0.8509803921568627)
     }
     
+    private func color(for tag: String) -> Color {
+        switch tag.lowercased() {
+        case "adults":
+            return .blue
+        case "behavioral health services":
+            return .black
+        case "individual therapy":
+            return .green
+        case "group therapy":
+            return .brown
+        case "inpatient care":
+            return .cyan
+        case "inpatient services":
+            return .cyan
+        case "telehealth available":
+            return .mint
+        case "integrated legal support":
+            return .teal
+        case "outpatient clinics":
+            return .indigo
+        case "outpatient care":
+            return .indigo
+        case "free services":
+            return .red
+        case "children & adolescents":
+            return .purple
+        case "substance abuse treatment":
+            return .orange
+        case "sliding scale fees":
+            return .yellow
+        case "cbt":
+            return .pink
+        case "psychiatric services":
+            return .gray
+        default:
+            return primaryColor
+        }
+    }
+    
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -55,6 +94,29 @@ struct SinglePsychView: View {
 
                 Spacer()
                 
+                if !psychologyItem.tags.isEmpty {
+                    VStack(alignment: .center, spacing: 10) {
+                        VStack(spacing: 8) {
+                            ForEach(psychologyItem.tags, id: \.self) { tag in
+                                Text(tag)
+                                    .padding(.vertical, 6)
+                                    .padding(.horizontal, 15)
+                                    .background(color(for: tag))
+                                    .foregroundColor(.white)
+                                    .cornerRadius(12)
+                            }
+                        }
+                        .padding(.horizontal, 30)
+                        .padding(.bottom, 10)
+                    }
+                    .padding()
+                    .background(backgroundColor)
+                    .cornerRadius(10)
+                    .padding(.horizontal, 30)
+                    .padding(.bottom, 10)
+                }
+
+                
                 Text(psychologyItem.general_info)
                     .foregroundColor(primaryColor)
                     .padding(.horizontal)
@@ -62,6 +124,7 @@ struct SinglePsychView: View {
             .padding(.vertical)
         }
         .background(backgroundColor.ignoresSafeArea())
+        .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
     }
 }
@@ -75,5 +138,5 @@ struct SinglePsychView: View {
         Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
                                                       
         Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
-"""))
+""", tags: []))
 }

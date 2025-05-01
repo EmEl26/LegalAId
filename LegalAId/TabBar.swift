@@ -12,16 +12,16 @@ struct TabBar: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             TabView {
-                MainScreen()
-                    .tabItem {
-                        Image(systemName: "house")
-                        Text("Home")
-                    }
-
                 ChatBotView()
                     .tabItem {
                         Image(systemName: "bubble.left.and.bubble.right")
                         Text("Chat")
+                    }
+
+                MainScreen()
+                    .tabItem {
+                        Image(systemName: "newspaper")
+                        Text("Resources")
                     }
 
                 LegalToolboxView()
@@ -41,7 +41,7 @@ struct TabBar: View {
             // Divider above the tab bar
             Divider()
                 .background(Color.gray.opacity(0.7))
-                .padding(.bottom, 60) 
+                .padding(.bottom, 60)
         }
         .ignoresSafeArea(.keyboard)
         .navigationBarBackButtonHidden(true)

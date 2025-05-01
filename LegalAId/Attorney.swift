@@ -19,6 +19,7 @@ struct Attorney: Identifiable, Codable {
     let address: String?
     let addresses: [String]?
     let instagram: String?
+    let tags: [String]
 }
 
 func decode_attorney(_ file: String) -> [Attorney] {
