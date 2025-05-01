@@ -14,6 +14,7 @@ struct PsychologySupport: Identifiable, Codable {
     let organization_name: String
     let address: String
     let general_info: String
+    let tags: [String]
 }
 
 func decode_psych(_ file: String) -> [PsychologySupport] {

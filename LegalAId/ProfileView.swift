@@ -1,8 +1,12 @@
 import SwiftUI
+import FirebaseAuth
+import FirebaseFirestore
 
 struct ProfileView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
     @State private var navigateToContentView = false
+    @State private var showDeleteConfirmation = false
+    @State private var isDeleting = false
 
     private var primaryColor: Color {
         Color(red: 0.078, green: 0.145, blue: 0.243)
@@ -21,12 +25,6 @@ struct ProfileView: View {
                     .foregroundColor(primaryColor)
                     .padding(.horizontal, 7)
                     .padding(.bottom)
-
-//                Image("law2")
-//                    .resizable()
-//                    .scaledToFit()
-//                    .clipShape(Circle())
-//                    .frame(width: 200, height: 150)
 
                 Text(authViewModel.name)
                     .font(.title)
@@ -55,46 +53,6 @@ struct ProfileView: View {
                         .cornerRadius(10)
                     }
 
-//                    NavigationLink(destination: Text("Account Security Details")) {
-//                        VStack(alignment: .leading, spacing: 10) {
-//                            HStack {
-//                                Image(systemName: "lock")
-//                                    .foregroundColor(primaryColor)
-//                                    .bold()
-//                                Text("Account Security")
-//                                    .foregroundColor(primaryColor)
-//                                Spacer()
-//                                Image(systemName: "chevron.right")
-//                                    .foregroundColor(Color(red: 0.674, green: 0.678, blue: 0.725))
-//                            }
-//                            ProgressView(value: 0.7)
-//                                .foregroundColor(primaryColor)
-//                                .frame(maxWidth: .infinity)
-//                            Text("Excellent")
-//                                .foregroundColor(.gray)
-//                                .font(.footnote)
-//                        }
-//                        .padding()
-//                        .background(backgroundColor)
-//                        .cornerRadius(10)
-//                    }
-//
-//                    NavigationLink(destination: Text("Customer Support Details")) {
-//                        HStack {
-//                            Image(systemName: "questionmark.circle")
-//                                .foregroundColor(primaryColor)
-//                                .bold()
-//                            Text("Customer Support")
-//                                .foregroundColor(primaryColor)
-//                            Spacer()
-//                            Image(systemName: "chevron.right")
-//                                .foregroundColor(.gray)
-//                        }
-//                        .padding()
-//                        .background(backgroundColor)
-//                        .cornerRadius(10)
-//                    }
-
                     // Logout Button
                     Button(action: {
                         authViewModel.logout()
@@ -115,9 +73,30 @@ struct ProfileView: View {
                         .cornerRadius(10)
                     }
                     .padding(.top, 20)
+
+                    // Delete Account Button
+                    Button(action: {
+                        showDeleteConfirmation = true
+                    }) {
+                        HStack {
+                            Image(systemName: "trash")
+                                .foregroundColor(.red)
+                                .bold()
+                            Text("Delete Account")
+                                .foregroundColor(.red)
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .foregroundColor(.gray)
+                        }
+                        .padding()
+                        .background(backgroundColor)
+                        .cornerRadius(10)
+                    }
+                    .padding(.top, 20)
                 }
                 .font(.title3)
                 .bold()
+                
                 .padding(.horizontal, 30)
                 .padding(.bottom, 10)
 
@@ -130,6 +109,40 @@ struct ProfileView: View {
             .navigationDestination(isPresented: $navigateToContentView) {
                 AppView()
                     .environmentObject(authViewModel)
+            }
+            .alert(isPresented: $showDeleteConfirmation) {
+                Alert(
+                    title: Text("Delete Account"),
+                    message: Text("Are you sure you want to permanently delete your account? This cannot be undone."),
+                    primaryButton: .destructive(Text("Delete")) {
+                        deleteAccount()
+                    },
+                    secondaryButton: .cancel()
+                )
+            }
+        }
+    }
+
+    private func deleteAccount() {
+        isDeleting = true
+        guard let user = Auth.auth().currentUser else { return }
+
+        let db = Firestore.firestore()
+        db.collection("users").document(user.uid).delete { error in
+            if let error = error {
+                print("Error deleting Firestore data: \(error.localizedDescription)")
+                isDeleting = false
+                return
+            }
+
+            user.delete { error in
+                if let error = error {
+                    print("Error deleting user: \(error.localizedDescription)")
+                    isDeleting = false
+                } else {
+                    authViewModel.logout()
+                    navigateToContentView = true
+                }
             }
         }
     }

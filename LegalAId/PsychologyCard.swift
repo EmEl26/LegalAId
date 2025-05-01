@@ -31,30 +31,95 @@ struct PsychologyCard: View {
                     Text("\(Image(systemName: "pin")) \(psychologyItem.address)")
                         .font(.subheadline)
                         .foregroundColor(primColor)
+                    
+                    HStack {
+                        ForEach(psychologyItem.tags, id: \.self) { tag in
+                            TagViewPsych(tag: tag, primaryColor: primColor)
+                        }
+                    }
+                    .padding(.top, 8)
                 }
                 .frame(maxWidth: .infinity)
                 .padding()
                 .background(secColor)
                 .cornerRadius(10)
-//                .overlay(
-//                    Text("0.2 m")
-//                        .font(.caption2)
-//                        .padding(.horizontal, 10)
-//                        .padding(.vertical, 5)
-//                        .background(Color.red.opacity(0.3))
-//                        .cornerRadius(10)
-//                        .foregroundColor(.black)
-//                        .padding(8),
-//                    alignment: .topTrailing
-//                )
             }
             .background(Color.white)
             .cornerRadius(10)
             .shadow(radius: 2)
-            
         }
     }
 }
+
+struct TagViewPsych: View {
+    let tag: String
+    let primaryColor: Color
+    @State private var isTapped = false
+    
+    private var circleColor: Color {
+        switch tag.lowercased() {
+        case "adults":
+            return .blue
+        case "behavioral health services":
+            return .black
+        case "individual therapy":
+            return .green
+        case "group therapy":
+            return .brown
+        case "inpatient care":
+            return .cyan
+        case "inpatient services":
+            return .cyan
+        case "telehealth available":
+            return .mint
+        case "integrated legal support":
+            return .teal
+        case "outpatient clinics":
+            return .indigo
+        case "outpatient care":
+            return .indigo
+        case "free services":
+            return .red
+        case "children & adolescents":
+            return .purple
+        case "substance abuse treatment":
+            return .orange
+        case "sliding scale fees":
+            return .yellow
+        case "cbt":
+            return .pink
+        case "psychiatric services":
+            return .gray
+        default:
+            return primaryColor
+        }
+    }
+    
+    var body: some View {
+        VStack {
+            Circle()
+                .fill(circleColor)
+                .frame(width: 10, height: 10)
+                .onTapGesture {
+                    withAnimation {
+                        isTapped.toggle()
+                    }
+                }
+
+
+            if isTapped {
+                Text(tag)
+                    .font(.caption)
+                    .foregroundColor(primaryColor)
+                    .padding(5)
+                    .background(Color.white.opacity(0.8))
+                    .cornerRadius(5)
+            }
+        }
+    }
+}
+
+
 
 #Preview {
     PsychologyCard(psychologyItem: PsychologySupport(organization_name: "NYC Health + Hospitals/Jacobi - Behavioral Health Services", address: "3900 Broadway, New York, NY 10027",general_info: """
@@ -63,7 +128,7 @@ struct PsychologyCard: View {
                                                      Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
                                                                                                    
                                                      Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
-                                             """), primColor:
+                                             """, tags:  ["cbt"]), primColor:
         Color(red: 0.0784313725490196, green: 0.1450980392156863, blue: 0.24313725490196078)
                    , secColor: Color(red: 0.796078431372549, green: 0.8392156862745098, blue: 0.8509803921568627))
 }
@@ -91,6 +156,13 @@ struct PsychologyCard: View {
                     .font(.caption)
                     .multilineTextAlignment(.center)
                     .foregroundColor(primaryColor)
+                
+                HStack {
+                    ForEach(psych.tags, id: \.self) { tag in
+                        TagViewPsych(tag: tag, primaryColor: primaryColor)
+                    }
+                }
+                .padding(.top, 8)
             }
             .padding()
             .frame(maxWidth: .infinity, minHeight: 170, maxHeight: 170)

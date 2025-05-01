@@ -146,7 +146,7 @@ struct CasesView2: View {
                             Text("Cases")
                                 .font(.title)
                                 .fontWeight(.bold)
-                                .foregroundColor(primColor)
+                                .foregroundColor(Color(red: 204/255, green: 153/255, blue: 0/255))
                         }
                         .padding(.horizontal, 7)
                         .padding(.bottom)
@@ -166,7 +166,7 @@ struct CasesView2: View {
                                         Text(label)
                                             .padding(.horizontal, 12)
                                             .padding(.vertical, 6)
-                                            .background(selectedTerm == label ? secColor : primColor)
+                                            .background(selectedTerm == label ? secColor : Color(red: 204/255, green: 153/255, blue: 0/255))
                                             .foregroundColor(.white)
                                             .cornerRadius(10)
                                     }

@@ -2,126 +2,151 @@
     {
         "organization_name": "Einstein Community Health Outreach (ECHO) Clinic",
         "address": "1894 Walton Avenue, Bronx, NY",
-        "general_info": "Free clinic for uninsured adults, offers primary health services including individual therapy, English, Spanish, other languages via interpretation; Ages 18+, volunteer-run, part of Albert Einstein College of Medicine, over 800 visits yearly"
+        "general_info": "Free clinic for uninsured adults, offers primary health services including individual therapy, English, Spanish, other languages via interpretation; Ages 18+, volunteer-run, part of Albert Einstein College of Medicine, over 800 visits yearly",
+        "tags": ["Adults", "Individual Therapy", "Free Services"]
     },
     {
         "organization_name": "Institute for Family Health: Center for Counseling",
         "address": "1420 Ferris Place, Bronx, NY",
-        "general_info": "Individual therapy, English, Spanish, other languages via interpretation; All services for children, cost starts low depending on need, likely M-F 9-5, telehealth available"
+        "general_info": "Individual therapy, English, Spanish, other languages via interpretation; All services for children, cost starts low depending on need, likely M-F 9-5, telehealth available",
+        "tags": ["Children & Adolescents", "Individual Therapy", "Telehealth Available"]
     },
     {
         "organization_name": "Montefiore Medical Center: Adult Outpatient Clinic",
         "address": "111 East 210th Street, Klau 1, Bronx, NY",
-        "general_info": "Individual, group therapy for adults, English, Spanish, Russian; N/A for children, accepts all insurance, sliding scale $30 min without insurance, offers CBT, DBT, TMS, esketamine, M-F 8:30-5, evenings M,T,Th to 7"
+        "general_info": "Individual, group therapy for adults, English, Spanish, Russian; N/A for children, accepts all insurance, sliding scale $30 min without insurance, offers CBT, DBT, TMS, esketamine, M-F 8:30-5, evenings M,T,Th to 7",
+        "tags": ["Adults", "Group Therapy", "CBT"]
     },
     {
         "organization_name": "Montefiore Medical Center: Children's Outpatient Clinic",
         "address": "111 East 210th Street, Bronx, NY",
-        "general_info": "Individual, group therapy for children/adolescents, English, Spanish; All services for children, accepts all insurance, sliding scale $30 min without insurance, specializes in developmental/emotional issues, ages 4+, M-F 8:30-5, evenings M,T,Th to 7"
+        "general_info": "Individual, group therapy for children/adolescents, English, Spanish; All services for children, accepts all insurance, sliding scale $30 min without insurance, specializes in developmental/emotional issues, ages 4+, M-F 8:30-5, evenings M,T,Th to 7",
+        "tags": ["Children & Adolescents", "Group Therapy", "CBT"]
     },
     {
         "organization_name": "North Central Bronx Hospital: Behavioral Health Services",
         "address": "3424 Kossuth Avenue, Bronx, NY",
-        "general_info": "Individual, group therapy, Medicaid enrollment help; English, Spanish, other languages via interpretation; No for children, accepts all insurance, sliding scale $20 min without insurance, likely M-F 9-5"
+        "general_info": "Individual, group therapy, Medicaid enrollment help; English, Spanish, other languages via interpretation; No for children, accepts all insurance, sliding scale $20 min without insurance, likely M-F 9-5",
+        "tags": ["Group Therapy", "Sliding Scale Fees", "Medicaid Accepted"]
     },
     {
         "organization_name": "Bronx Psychiatric Center",
         "address": "1500 Waters Place, Bronx, NY",
-        "general_info": "State-run psychiatric center offering inpatient care, emergency services 24/7; Likely English/Spanish with interpretation options; Ages 18+"
+        "general_info": "State-run psychiatric center offering inpatient care, emergency services 24/7; Likely English/Spanish with interpretation options; Ages 18+",
+        "tags": ["Adults", "Inpatient Services", "Psychiatric Services"]
     },
     {
         "organization_name": "NYC Health + Hospitals/Jacobi - Behavioral Health Services",
         "address": "1400 Pelham Parkway South, Bronx, NY",
-        "general_info": "Psychiatric services including inpatient and outpatient care"
+        "general_info": "Psychiatric services including inpatient and outpatient care",
+        "tags": ["Psychiatric Services"]
     },
     {
         "organization_name": "NYC Health + Hospitals/Lincoln - Behavioral Health Services",
         "address": "234 East 149th Street, Bronx, NY",
-        "general_info": "Mental health services including outpatient clinics"
+        "general_info": "Mental health services including outpatient clinics",
+        "tags": ["Mental Health Services", "Outpatient Clinics"]
     },
     {
         "organization_name": "Beverly Mack Harry Consulting Services",
         "address": "738 Crown St, Brooklyn, NY",
-        "general_info": "Wide variety of counseling including individual therapy; English, Creole; All services for children; Sliding scale, pricing not specified, likely by appointment"
+        "general_info": "Wide variety of counseling including individual therapy; English, Creole; All services for children; Sliding scale, pricing not specified, likely by appointment",
+        "tags": ["Children & Adolescents", "Individual Therapy", "Sliding Scale Fees"]
     },
     {
         "organization_name": "Community Counseling and Mediation (CCM) Brooklyn #1",
         "address": "25 Elm Place, 2nd Floor, Brooklyn, NY",
-        "general_info": "Individual therapy, psychiatric diagnosis, substance abuse treatment; English, Spanish, others on request; All services for children; Sliding scale $35 min/session without insurance, accepts Medicaid/Medicare"
+        "general_info": "Individual therapy, psychiatric diagnosis, substance abuse treatment; English, Spanish, others on request; All services for children; Sliding scale $35 min/session without insurance, accepts Medicaid/Medicare",
+        "tags": ["Individual Therapy", "Substance Abuse Treatment", "Sliding Scale Fees"]
     },
     {
         "organization_name": "Community Counseling and Mediation (CCM) Brooklyn #2",
         "address": "810 Classon Avenue, Brooklyn, NY",
-        "general_info": "Same as above"
+        "general_info": "Same as above",
+        "tags": ["Individual Therapy", "Substance Abuse Treatment", "Sliding Scale Fees"]
     },
     {
         "organization_name": "Community Counseling and Mediation (CCM) Brooklyn #3",
         "address": "81 Willoughby Street, 8th Floor, Brooklyn, NY",
-        "general_info": "Same as above"
+        "general_info": "Same as above",
+        "tags": ["Individual Therapy", "Substance Abuse Treatment", "Sliding Scale Fees"]
     },
     {
         "organization_name": "Lutheran Medical Center: Healthy Connections",
         "address": "514 49th Street, Brooklyn, NY",
-        "general_info": "Individual, play therapy, psychological assessments; English, Spanish; All services for children; Sliding scale $15 min/session, likely M-F 9-5, telehealth available"
+        "general_info": "Individual, play therapy, psychological assessments; English, Spanish; All services for children; Sliding scale $15 min/session, likely M-F 9-5, telehealth available",
+        "tags": ["Children & Adolescents", "Individual Therapy", "Play Therapy"]
     },
     {
         "organization_name": "Lutheran Medical Center: Sunset Terrace Mental Health Center",
         "address": "514 49th Street, Brooklyn, NY",
-        "general_info": "Weekly individual counseling; English, Arabic, Mandarin, Cantonese, Spanish; All services for children; Sliding scale $15 min/session, likely M-F 9-5, telehealth available"
+        "general_info": "Weekly individual counseling; English, Arabic, Mandarin, Cantonese, Spanish; All services for children; Sliding scale $15 min/session, likely M-F 9-5, telehealth available",
+        "tags": ["Children & Adolescents", "Individual Therapy", "Telehealth Available"]
     },
     {
         "organization_name": "Kingsboro Psychiatric Center",
         "address": "681 Clarkson Avenue, Brooklyn, NY",
-        "general_info": "State-run psychiatric center offering inpatient care, emergency services 24/7; Likely multilingual via OMH standards; Ages 18+"
+        "general_info": "State-run psychiatric center offering inpatient care, emergency services 24/7; Likely multilingual via OMH standards; Ages 18+",
+        "tags": ["Adults", "Inpatient Services", "Psychiatric Services"]
     },
     {
         "organization_name": "NYC Health + Hospitals/Kings County - Behavioral Health Services",
         "address": "451 Clarkson Avenue, Brooklyn, NY",
-        "general_info": "Comprehensive behavioral health services"
+        "general_info": "Comprehensive behavioral health services",
+        "tags": ["Behavioral Health Services"]
     },
     {
         "organization_name": "NYC Health + Hospitals/Woodhull - Behavioral Health Services",
         "address": "760 Broadway, Brooklyn, NY",
-        "general_info": "Psychiatric services including inpatient and outpatient care"
+        "general_info": "Psychiatric services including inpatient and outpatient care",
+        "tags": ["Psychiatric Services", "Inpatient Care", "Outpatient Care"]
     },
     {
         "organization_name": "NYC Health + Hospitals/Coney Island - Behavioral Health Services",
         "address": "2601 Ocean Parkway, Brooklyn, NY",
-        "general_info": "Mental health services including outpatient clinics"
+        "general_info": "Mental health services including outpatient clinics",
+        "tags": ["Mental Health Services", "Outpatient Clinics"]
     },
     {
         "organization_name": "Phoenix House",
         "address": "50 Jay St, Brooklyn, NY",
-        "general_info": "Substance abuse treatment, mental health services; accepts Medicaid"
+        "general_info": "Substance abuse treatment, mental health services; accepts Medicaid",
+        "tags": ["Substance Abuse Treatment", "Mental Health Services"]
     },
     {
         "organization_name": "Bellevue/NYU Program for Survivors of Torture",
         "address": "462 First Ave, New York, NY",
-        "general_info": "Comprehensive medical, mental health care, legal assistance; Languages not specified (assume multilingual via NYU); Services for children not specified (assume includes); Likely free"
+        "general_info": "Comprehensive medical, mental health care, legal assistance; Languages not specified (assume multilingual via NYU); Services for children not specified (assume includes); Likely free",
+        "tags": ["Children & Adolescents", "Free Services", "Integrated Legal Support"]
     },
     {
         "organization_name": "City College: The Psychological Center",
         "address": "160 Convent Ave, New York, NY",
-        "general_info": "Individual psychotherapy, group counseling, psychological testing; English, Spanish; All services for children; Sliding scale $3-$5/session, likely M-F 9-5"
+        "general_info": "Individual psychotherapy, group counseling, psychological testing; English, Spanish; All services for children; Sliding scale $3-$5/session, likely M-F 9-5",
+        "tags": ["Children & Adolescents", "Individual Therapy", "Sliding Scale Fees"]
     },
     {
         "organization_name": "Columbia University Teachers College: Dean Hope Center",
         "address": "525 West 120th Street, New York, NY",
-        "general_info": "Individual therapy; English only; All services for children; Sliding scale $7 min/session without insurance, likely M-F 9-5, academic setting with telehealth options"
+        "general_info": "Individual therapy; English only; All services for children; Sliding scale $7 min/session without insurance, likely M-F 9-5, academic setting with telehealth options",
+        "tags": ["Children & Adolescents", "Individual Therapy", "Telehealth Available"]
     },
     {
         "organization_name": "Community Counseling and Mediation (CCM)",
         "address": "15 West 39th St, New York, NY",
-        "general_info": "Individual therapy, psychiatric diagnosis, substance abuse treatment; English, Spanish, others on request; All services for children; Sliding scale $35 min/session without insurance, accepts Medicaid/Medicare"
+        "general_info": "Individual therapy, psychiatric diagnosis, substance abuse treatment; English, Spanish, others on request; All services for children; Sliding scale $35 min/session without insurance, accepts Medicaid/Medicare",
+        "tags": ["Children & Adolescents", "Individual Therapy", "Substance Abuse Treatment"]
     },
     {
         "organization_name": "Family Health Center of Harlem",
         "address": "1824 Madison Ave, New York, NY",
-        "general_info": "Individual therapy; English, Spanish, Bangladeshi; All services for children; $30 intake, sessions start less, call for pricing, likely M-F 9-5"
+        "general_info": "Individual therapy; English, Spanish, Bangladeshi; All services for children; $30 intake, sessions start less, call for pricing, likely M-F 9-5",
+        "tags": ["Children & Adolescents", "Individual Therapy", "Sliding Scale Fees"]
     },
     {
         "organization_name": "Lenox Hill Hospital: Outpatient Center for Mental Health",
         "address": "210 E. 64th St, New York, NY",
-        "general_info": "Individual therapy; English; N/A for children; Sliding scale $23 min/session, $54 intake fee, accepts insurance, likely M-F 9-5 with evening hours"
+        "general_info": "Individual therapy; English; N/A for children; Sliding scale $23 min/session, $54 intake fee, accepts insurance, likely M-F 9-5 with evening hours",
+        "tags": ["Individual Therapy", "Sliding Scale Fees"]
     }
 ]

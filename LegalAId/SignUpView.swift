@@ -197,7 +197,7 @@ struct SignUpView: View {
             return "Password must include at least one special character (!@#$%^&* etc.)."
         }
         
-        return nil 
+        return nil
     }
 }
 

@@ -82,9 +82,10 @@ class AuthViewModel: ObservableObject {
                 self.isLoggingIn = false
                 if let error = error {
                     print("Login error: \(error.localizedDescription)")
-                    self.errorMessage = error.localizedDescription
+                    self.errorMessage = error.localizedDescription // Show error
                 } else {
                     print("Login successful for: \(result?.user.email ?? "")")
+                    self.errorMessage = nil  
                     self.isLoggedIn = true
                     self.fetchUserData()
                 }

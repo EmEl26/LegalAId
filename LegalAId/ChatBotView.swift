@@ -1,8 +1,12 @@
 import SwiftUI
 
 struct ChatBotView: View {
-    @State private var messageText: String = ""
-    @State private var messages: [ChatMessage] = []
+    @State private var questionText: String = ""
+    @State private var isLoading: Bool = false
+
+    @State private var messages: [ChatMessage] = [
+        ChatMessage(question: "", response: "Welcome to Legal Ai(d). Ask any question about New York State or NYC laws.")
+    ]
 
     private var primaryColor: Color {
         Color(red: 0.078, green: 0.145, blue: 0.243)
@@ -12,9 +16,7 @@ struct ChatBotView: View {
         Color(red: 0.898, green: 0.91, blue: 0.914)
     }
 
-    private var bubbleColor: Color {
-        Color(red: 0.22, green: 0.33, blue: 0.42)
-    }
+    private var legalAidService = LegalAidService(apiKey: Config.anthropicApiKey)
 
     var body: some View {
         VStack {
@@ -24,99 +26,112 @@ struct ChatBotView: View {
                     Image(systemName: "chevron.left")
                         .foregroundColor(primaryColor)
                         .padding()
-                        
                 }
 
                 Spacer()
                 Text("Chat")
                     .font(.title2)
-                    .foregroundColor(Color(red: 0.49019607843137253, green: 0.5254901960784314, blue: 0.5764705882352941))
+                    .foregroundColor(Color(red: 0.49, green: 0.53, blue: 0.58))
                 Spacer()
 
                 Image(systemName: "ellipsis")
                     .font(.title)
                     .padding()
-                    .foregroundColor(Color(red: 0.49019607843137253, green: 0.5254901960784314, blue: 0.5764705882352941))
+                    .foregroundColor(Color(red: 0.49, green: 0.53, blue: 0.58))
             }
 
             Spacer(minLength: 10)
 
-            if messages.isEmpty {
-            Text("Legal Ai(d)")
-                .font(.title)
-                .foregroundColor(primaryColor)
-                .bold()
-                .padding(.bottom)
-
-                VStack(spacing: 12) {
-                    QuestionBubble(text: "Is it legal to record a conversation without the other person's consent?")
-                    QuestionBubble(text: "Can a landlord enter my apartment without giving prior notice?")
-                    QuestionBubble(text: "Is it legal to resell concert or sports tickets at a higher price?")
-                    QuestionBubble(text: "Are businesses required to accept cash payments?")
-                }
-                .padding(.horizontal)
-            } else {
-                ScrollView {
-                    VStack(spacing: 20) {
-                        ForEach(messages) { message in
-                            VStack(alignment: .leading, spacing: 8) {
-                                HStack {
-                                    Spacer()
-                                    ChatQuestionView(question: message.question)
-                                }
-
-                                HStack {
-                                    ResponseBubble(response: message.response)
-                                    Spacer()
-                                }
-                            }
+            // ScrollView for chat messages
+            ScrollView {
+                VStack(spacing: 20) {
+                    // Display messages
+                    ForEach(messages) { message in
+                        if !message.question.isEmpty {
+                            ChatQuestionView(question: message.question) // Show the user's question
                         }
+                        if !message.response.isEmpty {
+                            ResponseBubble(response: message.response) // Show the bot's response
+                        }
+                    }
+
+                    // Show loading indicator if required
+                    if isLoading {
+                        ProgressView("Processing your question...")
+                            .progressViewStyle(CircularProgressViewStyle(tint: .blue))
+                            .padding()
                     }
                 }
             }
 
             Spacer()
 
+            // Input Field and Send Button
             HStack {
-                TextField("Send a message.", text: $messageText, onCommit: {
-                    sendMessage()
+                TextField("Ask a legal question about NY law...", text: $questionText, onCommit: {
+                    sendQuestion()
                 })
-                .foregroundColor(primaryColor)
                 .padding()
+                .foregroundColor(primaryColor)
 
-                Button(action: sendMessage) {
+                Button(action: sendQuestion) {
                     Image(systemName: "paperplane.fill")
                         .foregroundColor(primaryColor)
                         .padding(10)
-                        .clipShape(Circle())
                 }
-                
             }
-            .background(Color(red: 0.796078431372549, green: 0.8392156862745098, blue: 0.8509803921568627))
+            .background(Color(red: 0.796, green: 0.839, blue: 0.851))
             .cornerRadius(10)
             .padding()
+
+            // Reset Button
+            Button(action: resetConversation) {
+                Text("Reset Conversation")
+                    .bold()
+                    .foregroundColor(.white)
+                    .padding()
+                    .background(Color.red)
+                    .cornerRadius(10)
+            }
+            .padding(.bottom)
         }
         .background(backgroundColor.ignoresSafeArea())
     }
 
-    func sendMessage() {
-        let trimmed = messageText.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !trimmed.isEmpty else { return }
+    func sendQuestion() {
+        let trimmed = questionText.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else {
+            return
+        }
 
-        let response = generateResponse(for: trimmed)
-        messages.append(ChatMessage(question: trimmed, response: response))
-        messageText = ""
+        isLoading = true
+        let question = trimmed
+        questionText = ""
+
+        // Add the user's question to the message list
+        messages.append(ChatMessage(question: question, response: "Processing your question..."))
+        
+        Task {
+            do {
+                let response = try await legalAidService.sendMessage(question)
+            
+                if let lastMessageIndex = messages.indices.last {
+                    messages[lastMessageIndex].response = response
+                }
+            } catch {
+                
+                if let lastMessageIndex = messages.indices.last {
+                    messages[lastMessageIndex].response = "Error: \(error.localizedDescription)"
+                }
+            }
+            isLoading = false
+        }
     }
 
-    func generateResponse(for input: String) -> String {
-        return """
-        Dressing appropriately for court is important as it reflects respect for the legal process and can influence how you're perceived.
-
-        **General Tips:**
-        1. **Dress Conservatively**: Choose attire that is modest and professional.
-        2. **Keep It Simple**: Avoid flashy or distracting outfits.
-        3. **Grooming Matters**: Ensure your hair is neat, and if applicable, your makeup and accessories are understated.
-        """
+    func resetConversation() {
+        legalAidService.resetConversation()
+        messages = [ChatMessage(question: "", response: "Welcome to Legal Ai(d). Ask any question about New York State or NYC laws.")]
+        questionText = ""
     }
 }
 
