@@ -26,10 +26,6 @@ struct AnthropicRequest: Encodable {
 
 struct AnthropicResponse: Decodable {
     let content: [Content]
-    let id: String
-    let model: String
-    let role: String
-    let type: String
     
     struct Content: Decodable {
         let text: String
@@ -44,12 +40,11 @@ final class LegalAidService {
     private let apiKey: String
     private var conversationHistory: [AnthropicRequest.Message] = []
     
-    init(model: String = "claude-3-7-sonnet-20250219", apiKey: String) {
+    init(model: String = "claude-3-sonnet-20240229", apiKey: String) {  
         self.model = model
         self.apiKey = apiKey
         
         self.systemPrompt = """
-        Claude System Prompt for Legal Ad(d) Chatbot
         You are Legal Ai(d), a Legal Expert who provides information about New York State and NYC laws and legal rights. Your purpose is to help users understand their legal rights and obligations within New York's jurisdiction.
 
         Your Knowledge Base
@@ -92,7 +87,7 @@ final class LegalAidService {
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("2023-06-01", forHTTPHeaderField: "anthropic-version")
-        request.addValue("Bearer \(apiKey)", forHTTPHeaderField: "x-api-key")
+        request.addValue(apiKey, forHTTPHeaderField: "x-api-key")  
         
         let userMessage = AnthropicRequest.Message(role: "user", content: message)
         conversationHistory.append(userMessage)
@@ -145,4 +140,3 @@ final class LegalAidService {
         conversationHistory = []
     }
 }
-
