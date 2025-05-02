@@ -28,7 +28,7 @@ struct LoginView: View {
                 HStack {
                     Text("Unlock your 24/7")
                         .font(.largeTitle)
-                        .foregroundColor(Color(red: 255/255, green: 223/255, blue: 0/255))
+                        .foregroundColor(Color(red: 201/255, green: 159/255, blue: 61/255))
                         .bold()
                         .tracking(-0.4)
                         .padding(.trailing, 30)
@@ -37,7 +37,7 @@ struct LoginView: View {
                     
                     Text("Legal Ai(d)")
                         .font(.largeTitle)
-                        .foregroundColor(Color(red: 0/255, green: 0/255, blue: 128/255))
+                        .foregroundColor(Color(red: 21/255, green: 35/255, blue: 62/255))
                         .bold()
                         .tracking(-0.4)
                         .padding(.horizontal, 35)
