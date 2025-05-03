@@ -1,5 +1,7 @@
 import Foundation
 
 struct Config {
-    static let anthropicApiKey = "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"
+    static var anthropicApiKey: String {
+        return "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"
+    }
 }

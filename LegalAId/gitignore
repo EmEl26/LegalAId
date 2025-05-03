@@ -1,0 +1,30 @@
+# Xcode
+.DS_Store
+xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+DerivedData/
+build/
+
+# Swift Package Manager
+.build/
+Packages/
+Package.pins
+Package.resolved
+
+# CocoaPods
+Pods/
+Podfile.lock
+
+# Sensitive Information
+*.env
+env.swift
+Keys.swift
+Secrets.swift
+APIKeys.swift
+Config.swift  # Important: Ignore Config.swift as it contains the API key
+
+# Miscellaneous
+*.swp
+.DS_Store

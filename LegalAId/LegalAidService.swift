@@ -1,12 +1,6 @@
-//
-//  LegalAidService.swift
-//  LegalAId
-//
-//  Created by Zoie Geronimi on 4/30/25.
-//
-
 import Foundation
 
+// MARK: - Models
 struct AnthropicRequest: Encodable {
     let model: String
     let system: String
@@ -26,6 +20,10 @@ struct AnthropicRequest: Encodable {
 
 struct AnthropicResponse: Decodable {
     let content: [Content]
+    let id: String
+    let model: String
+    let role: String
+    let type: String
     
     struct Content: Decodable {
         let text: String
@@ -33,6 +31,7 @@ struct AnthropicResponse: Decodable {
     }
 }
 
+// MARK: - Service
 final class LegalAidService {
     private let model: String
     private let systemPrompt: String
@@ -40,23 +39,18 @@ final class LegalAidService {
     private let apiKey: String
     private var conversationHistory: [AnthropicRequest.Message] = []
     
-    init(model: String = "claude-3-sonnet-20240229", apiKey: String) {  
+    init(model: String = "claude-3-7-sonnet-20250219", apiKey: String = Config.anthropicApiKey) {
         self.model = model
         self.apiKey = apiKey
         
+        // Get knowledge base description from the LegalDataManager
+        let knowledgeBaseDescription = LegalDataManager.shared.generateKnowledgeBaseDescription()
+        
         self.systemPrompt = """
+        Claude System Prompt for Legal Ai(d) Chatbot
         You are Legal Ai(d), a Legal Expert who provides information about New York State and NYC laws and legal rights. Your purpose is to help users understand their legal rights and obligations within New York's jurisdiction.
 
-        Your Knowledge Base
-        You have access to a comprehensive database of New York legal information including:
-
-        Rights information (filming police, ID requirements, wrongful termination, landlord discrimination)
-        Immigration status and law enforcement interactions
-        Tenant rights and landlord disputes
-        Criminal law procedures and rights
-        Family law (child support, custody)
-        Employment law
-        Legal resources and attorney referrals
+        Your Knowledge Base\(knowledgeBaseDescription)
 
         Your Response Guidelines
 
@@ -87,8 +81,9 @@ final class LegalAidService {
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("2023-06-01", forHTTPHeaderField: "anthropic-version")
-        request.addValue(apiKey, forHTTPHeaderField: "x-api-key")  
+        request.addValue(apiKey, forHTTPHeaderField: "x-api-key")
         
+        // Add user message to conversation history
         let userMessage = AnthropicRequest.Message(role: "user", content: message)
         conversationHistory.append(userMessage)
         
@@ -99,42 +94,21 @@ final class LegalAidService {
             maxTokens: maxTokens
         )
         
-        let encoder = JSONEncoder()
-        encoder.outputFormatting = [.prettyPrinted, .withoutEscapingSlashes]
-
-        let jsonData = try encoder.encode(requestBody)
-        if let jsonString = String(data: jsonData, encoding: .utf8) {
-            print("🔍 Raw JSON Request Body:\n\(jsonString)")
-        }
-
-        request.httpBody = jsonData
-
+        request.httpBody = try JSONEncoder().encode(requestBody)
         
-        let (data, response) = try await URLSession.shared.data(for: request)
+        let (data, _) = try await URLSession.shared.data(for: request)
+        let response = try JSONDecoder().decode(AnthropicResponse.self, from: data)
         
-        // DEBUG: Print raw JSON response
-        if let jsonString = String(data: data, encoding: .utf8) {
-            print("Raw response: \(jsonString)")
+        guard let textContent = response.content.first(where: { $0.type == "text" }) else {
+            throw NSError(domain: "No text content in response", code: 0)
         }
-
-        // Try decoding
-        do {
-            let decoded = try JSONDecoder().decode(AnthropicResponse.self, from: data)
-            
-            guard let textContent = decoded.content.first(where: { $0.type == "text" }) else {
-                throw NSError(domain: "No text content in response", code: 0)
-            }
-
-            let assistantMessage = AnthropicRequest.Message(role: "assistant", content: textContent.text)
-            conversationHistory.append(assistantMessage)
-            
-            return textContent.text
-        } catch {
-            print("Decoding error: \(error)")
-            throw error // propagate for UI to show
-        }
+        
+        // Add assistant response to conversation history
+        let assistantMessage = AnthropicRequest.Message(role: "assistant", content: textContent.text)
+        conversationHistory.append(assistantMessage)
+        
+        return textContent.text
     }
-
     
     func resetConversation() {
         conversationHistory = []
