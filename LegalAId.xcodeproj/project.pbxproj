@@ -40,6 +40,8 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
+				"Untitled 2.swift",
+				Untitled.swift,
 			);
 			target = E3B5264C2DC042D6007EDEF2 /* LegalAId */;
 		};
